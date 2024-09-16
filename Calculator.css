@@ -12,7 +12,7 @@ body {
   perspective: 1000px;
   width: 320px;
   height: 500px;
-  background-color: #07a6f5;
+  background-color: linear-gradient(to right top, #1bcd87, #00c0b9, #00adea, #0093ff, #006cf6, #006bf5, #006af3, #0069f2, #008efd, #00a2d7, #00af96, #25b556);;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
