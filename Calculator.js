@@ -1,6 +1,6 @@
 const screen = document.getElementById('screen');
 let currentInput = '';
-let operator = null;
+let operator = ;
 let previousInput = '';
 
 function appendNumber(number) {
