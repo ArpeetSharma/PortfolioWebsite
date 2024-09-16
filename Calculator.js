@@ -1,26 +1,65 @@
-function appendCharacter(character) {
-    const display = document.getElementById('display');
-    if (display.innerText === '0') {
-        display.innerText = character;
-    } else {
-        display.innerText += character;
-    }
+const screen = document.getElementById('screen');
+let currentInput = '';
+let operator = null;
+let previousInput = '';
+
+function appendNumber(number) {
+  currentInput += number;
+  updateScreen();
 }
 
-function clearDisplay() {
-    document.getElementById('display').innerText = '0';
+function appendOperator(op) {
+  if (currentInput === '') return;
+  if (previousInput !== '') {
+    calculate();
+  }
+  operator = op;
+  previousInput = currentInput;
+  currentInput = '';
 }
 
-function deleteLast() {
-    const display = document.getElementById('display');
-    display.innerText = display.innerText.slice(0, -1) || '0';
+function clearScreen() {
+  currentInput = '';
+  previousInput = '';
+  operator = null;
+  updateScreen();
 }
 
-function calculateResult() {
-    const display = document.getElementById('display');
-    try {
-        display.innerText = eval(display.innerText);
-    } catch (error) {
-        display.innerText = 'Error';
-    }
+function del() {
+  currentInput = currentInput.slice(0, -1);
+  updateScreen();
+}
+
+function calculate() {
+  let result;
+  const prev = parseFloat(previousInput);
+  const current = parseFloat(currentInput);
+
+  if (isNaN(prev) || isNaN(current)) return;
+
+  switch (operator) {
+    case '+':
+      result = prev + current;
+      break;
+    case '-':
+      result = prev - current;
+      break;
+    case '*':
+      result = prev * current;
+      break;
+    case '/':
+      result = prev / current;
+      break;
+    default:
+      return;
+  }
+
+  currentInput = result;
+  operator = null;
+  previousInput = '';
+  updateScreen();
+}
+
+function updateScreen() {
+  screen.innerText = currentInput || '0';
 }
