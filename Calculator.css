@@ -12,7 +12,7 @@ body {
   perspective: 1000px;
   width: 320px;
   height: 500px;
-  background-color: #333;
+  background-color: #fcfcfc;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
