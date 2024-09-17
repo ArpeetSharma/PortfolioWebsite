@@ -1,65 +1,27 @@
 const screen = document.getElementById('screen');
-let currentInput = '';
-let operator = ;
-let previousInput = '';
+let screenValue = '';
 
-function appendNumber(number) {
-  currentInput += number;
-  updateScreen();
-}
+document.querySelectorAll('.button').forEach(button => {
+    button.addEventListener('click', () => {
+        const value = button.getAttribute('data-value');
 
-function appendOperator(op) {
-  if (currentInput === '') return;
-  if (previousInput !== '') {
-    calculate();
-  }
-  operator = op;
-  previousInput = currentInput;
-  currentInput = '';
-}
+        if (value === 'C') {
+            screenValue = '';
+        } else if (value === '=') {
+            try {
+                screenValue = eval(screenValue);
+            } catch {
+                screenValue = 'Error';
+                document.querySelector('.calculator').classList.add('shake');
+                setTimeout(() => {
+                    document.querySelector('.calculator').classList.remove('shake');
+                }, 500);
+            }
+        } else {
+            screenValue += value;
+        }
 
-function clearScreen() {
-  currentInput = '';
-  previousInput = '';
-  operator = null;
-  updateScreen();
-}
+        screen.innerText = screenValue || '0';
+    });
+});
 
-function del() {
-  currentInput = currentInput.slice(0, -1);
-  updateScreen();
-}
-
-function calculate() {
-  let result;
-  const prev = parseFloat(previousInput);
-  const current = parseFloat(currentInput);
-
-  if (isNaN(prev) || isNaN(current)) return;
-
-  switch (operator) {
-    case '+':
-      result = prev + current;
-      break;
-    case '-':
-      result = prev - current;
-      break;
-    case '*':
-      result = prev * current;
-      break;
-    case '/':
-      result = prev / current;
-      break;
-    default:
-      return;
-  }
-
-  currentInput = result;
-  operator = null;
-  previousInput = '';
-  updateScreen();
-}
-
-function updateScreen() {
-  screen.innerText = currentInput || '0';
-}
