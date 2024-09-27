@@ -53,14 +53,18 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
-        <p>If you have any questions or would like to work with us, feel free to reach out!</p>
-        <form action="send_email.php">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+        <form action="send_feedback.php" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="feedback">Feedback:</label>
+  <textarea id="feedback" name="feedback" required></textarea>
+
+  <input type="submit" value="Submit">
+</form>
 
 </body>
 </html>
