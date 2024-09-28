@@ -49,22 +49,20 @@
         <h2>About Us</h2>
         <p>We are a team of passionate web developers and designers, dedicated to creating the best online experiences for our clients. With years of experience and hundreds of satisfied customers, we are ready to bring your vision to life.</p>
     </section>
+  <h2>Contact Form</h2>
+    <form action="process_form.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <form action="send_feedback.php" method="post">
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="5" cols="30" required></textarea><br><br>
 
-  <label for="feedback">Feedback:</label>
-  <textarea id="feedback" name="feedback" required></textarea>
-
-  <input type="submit" value="Submit">
-</form>
+        <input type="submit" value="Submit">
+    </form>
+    
 
 </body>
 </html>
