@@ -1,20 +1,20 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
+    // Collect form data
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    // Validate and process form data
-    if (!empty($name) && !empty($email) && !empty($message)) {
-        // Example: Echoing the form data (in practice, you might send an email or store it in a database)
-        echo "Name: $name<br>";
-        echo "Email: $email<br>";
-        echo "Message: $message<br>";
+    // Set the email details
+    $to = "arpeet047@gmail.com";  // Replace with your email
+    $subject = "New Feedback from $name";
+    $body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
+
+    // Send the email
+    if (mail($to, $subject, $body)) {
+        echo "Thank you for your feedback!";
     } else {
-        echo "All fields are required.";
+        echo "Sorry, there was an issue sending your feedback. Please try again.";
     }
-} else {
-    echo "Invalid request.";
 }
 ?>
