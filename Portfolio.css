@@ -47,7 +47,7 @@ header nav ul li a:hover {
 /* Hero Section */
 #hero {
     height: 100vh;
-    background: url('hero-image.jpg') no-repeat center center/cover;
+    background: url('https://i.postimg.cc/pLykmfgb/stylish-blue-abstract-background-with-text-space.jpg') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
